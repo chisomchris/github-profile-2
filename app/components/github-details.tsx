@@ -13,12 +13,14 @@ export type GithubUser = {
 
 export const GithubDetails = ({
   stats,
+  html_url,
   avatar_url,
   name = "Github User",
   bio = "",
 }: {
   stats: { label: string; value: string | number }[];
   avatar_url: string | undefined;
+  html_url: string;
   name: string;
   bio?: string;
 }) => {
@@ -26,7 +28,7 @@ export const GithubDetails = ({
     <>
       <div className="flex gap-x-4 gap-y-6 flex-wrap flex-col mb-6 sm:flex-row sm:items-center sm:mb-0">
         <div className="-mt-16 relative mr-4 mb-2">
-          <Avatar uri={avatar_url} />
+          <Avatar uri={avatar_url} github={html_url} />
         </div>
         {stats.map((stat, i) => (
           <Stat label={stat.label} value={stat.value} key={i} />
